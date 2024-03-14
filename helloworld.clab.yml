@@ -7,9 +7,13 @@ topology:
     ceos1:
       kind: arista_ceos
       image: ceos:4.31.2F
-    ceos2:
+      publish:
+         - tcp/22
+    ceos2:		
       kind: arista_ceos
       image: ceos:4.31.2F
+      publish:
+         - tcp/22
 
   links:
     - endpoints: ["ceos1:eth1", "ceos2:eth1"]
