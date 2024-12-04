@@ -1,0 +1,28 @@
+name: spineleaf
+
+topology:
+  defaults:
+    kind: arista_ceos
+  kinds:
+    arista_ceos:
+      image: ceos:4.31.2F
+
+  nodes:
+        # spines
+    {{- range $spineIndex := seq 1 $.spines.num }}
+        {{ $.spines.prefix }}{{ $spineIndex }}:
+          type: {{ $.spines.type }}
+    {{- end }}
+        # leaves
+    {{- range $leafIndex := seq 1 $.leaves.num }}
+        {{ $.leaves.prefix }}{{ $leafIndex }}:
+          type: {{ $.leaves.type }}
+    {{- end }}
+
+  links:
+    {{- range $spineIndex := seq 1 $.spines.num }}
+        # {{ $.spines.prefix }}{{ $spineIndex }}
+      {{- range $leafIndex := seq 1 $.leaves.num }}
+        - endpoints: ["{{ $.spines.prefix }}{{ $spineIndex }}:e1-{{ $leafIndex }}", "{{ $.leaves.prefix }}{{ $leafIndex }}:e1-{{ $spineIndex }}"]
+      {{- end }}
+    {{- end }}

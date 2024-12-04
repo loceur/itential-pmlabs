@@ -1,0 +1,45 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
+# adapetd for Arista CEOS only
+name: biglab
+
+topology:
+  nodes:
+    spine1-dc1:
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    spine2-dc1:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf1-dc1:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf2-dc1:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf3-dc1:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf4-dc1:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    spine1-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    spine2-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf1-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf2-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf3-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+    leaf4-dc2:		
+      kind: arista_ceos
+      image: ceos:4.31.2F
+
+  links:
+    - endpoints: ["spine1-dc1:eth1", "leaf1-dc1:eth1"]
