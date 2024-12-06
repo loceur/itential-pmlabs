@@ -23,6 +23,6 @@ topology:
     {{- range $spineIndex := seq 1 $.spines.num }}
         # {{ $.spines.prefix }}{{ $spineIndex }}
       {{- range $leafIndex := seq 1 $.leaves.num }}
-        - endpoints: ["{{ $.spines.prefix }}{{ $spineIndex }}:e1-{{ $leafIndex }}", "{{ $.leaves.prefix }}{{ $leafIndex }}:e1-{{ $spineIndex }}"]
+        - endpoints: ["{{ $.spines.prefix }}{{ $spineIndex }}:eth{{ $leafIndex }}", "{{ $.leaves.prefix }}{{ $leafIndex }}:eth{{ $spineIndex }}"]
       {{- end }}
     {{- end }}
